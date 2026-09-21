@@ -1,0 +1,25 @@
+# Optional task runner sidecars (JavaScript / Python code steps)
+# Chart requires an auth token secret when enabled:
+#   kubectl create secret generic n8n-runner-token \
+#     --from-literal=auth-token=$(openssl rand -base64 32)
+
+taskRunners:
+  enabled: true
+  mode: external
+  authToken:
+    existingSecret: "n8n-runner-token"
+    existingSecretKey: "auth-token"
+  broker:
+    listenAddress: "0.0.0.0"
+    port: 5679
+  launcher:
+    logLevel: info
+    autoShutdownTimeout: 15
+  nativePythonRunner: true
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "1Gi"
+    limits:
+      cpu: "2000m"
+      memory: "2Gi"

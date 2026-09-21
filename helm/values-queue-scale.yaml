@@ -1,0 +1,30 @@
+# Queue mode + scaling example (main / workers / webhook processors)
+# Requires external PostgreSQL and Redis when queueMode.enabled = true
+
+queueMode:
+  enabled: true
+  workerReplicaCount: 3
+  workerConcurrency: 10
+
+webhookProcessor:
+  enabled: true
+  replicaCount: 2
+  # Route production webhooks to dedicated processors, not main
+  disableProductionWebhooksOnMainProcess: true
+
+hpa:
+  main:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
+    targetCPUUtilizationPercentage: 70
+  worker:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 75
+  webhookProcessor:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 8
+    targetCPUUtilizationPercentage: 70

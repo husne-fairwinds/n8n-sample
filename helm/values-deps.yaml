@@ -1,0 +1,40 @@
+# External dependencies — replace placeholders with your Postgres / Redis endpoints
+# Secrets are referenced by name; do not commit real credentials
+
+database:
+  type: postgresdb
+  useExternal: true
+  host: "n8n-db.example.internal"
+  port: 5432
+  database: n8n
+  schema: public
+  user: n8n
+  passwordSecret:
+    name: n8n-db-secret
+    key: password
+  # Chart-native SSL (preferred over only setting env vars):
+  # ssl:
+  #   enabled: true
+  #   rejectUnauthorized: true
+
+redis:
+  enabled: true
+  useExternal: true
+  host: "n8n-redis.example.internal"
+  port: 6379
+  # Enable when Redis requires AUTH:
+  # passwordSecret:
+  #   name: n8n-redis-secret
+  #   key: password
+
+# Core n8n secrets (encryption key, host, protocol). Prefer an existing Secret.
+secretRefs:
+  existingSecret: "n8n-core-secrets"
+
+config:
+  timezone: UTC
+  extraEnv:
+    - name: N8N_LOG_LEVEL
+      value: "info"
+    - name: N8N_LOG_OUTPUT
+      value: "json"

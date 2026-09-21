@@ -1,0 +1,17 @@
+# Local / generated
+.charts/
+*.tgz
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Secrets — never commit
+.env
+.env.*
+*.pem
+*.key
+secrets/
+*-secret.yaml
+*-secrets.yaml

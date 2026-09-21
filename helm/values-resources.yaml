@@ -1,0 +1,32 @@
+# Official n8n Helm chart — resource sizing example
+# Chart: https://github.com/n8n-io/n8n-hosting/tree/main/charts/n8n
+#
+# Illustrative production-style requests/limits for:
+#   - main (UI / API)
+#   - worker (queue consumers)
+#   - webhookProcessor (dedicated webhook pods)
+
+resources:
+  main:
+    requests:
+      cpu: "500m"
+      memory: "1Gi"
+    limits:
+      cpu: "1000m"
+      memory: "2Gi"
+
+  worker:
+    requests:
+      cpu: "300m"
+      memory: "512Mi"
+    limits:
+      cpu: "800m"
+      memory: "1Gi"
+
+  webhookProcessor:
+    requests:
+      cpu: "200m"
+      memory: "256Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
