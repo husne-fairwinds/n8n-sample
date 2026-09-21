@@ -1,6 +1,6 @@
 # n8n on Kubernetes (Helm values sample)
 
-Sanitized Helm values for running **n8n** in queue mode on Kubernetes: **main** (UI/API), **workers** (executions), and **webhook processors** (production webhooks).
+Helm values for running **n8n** in queue mode on Kubernetes: **main** (UI/API), **workers** (executions), and **webhook processors** (production webhooks).
 
 Built against the [official n8n Helm chart](https://github.com/n8n-io/n8n-hosting/tree/main/charts/n8n) (`oci://ghcr.io/n8n-io/n8n-helm-chart/n8n`, pinned below to **1.0.0**). Value keys can change between chart versions — check the chart README before upgrading.
 
